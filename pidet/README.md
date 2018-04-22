@@ -5,11 +5,18 @@
 * https://github.com/dnek/Pidet
 
 ## How to Use
-
+* linux
 ```
 $ docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -v $(pwd)/share:/home/user/share -it okwrtdsh/pidet
 ```
 
+* mac
+```
+$ brew install socat
+$ brew cask install xquartz
+$ socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
+$ docker run --rm -e DISPLAY=<docker host>:0 -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -v $(pwd)/share:/home/user/share -it okwrtdsh/pidet
+```
 
 ## How to Build
 * Base Image: okwrtdsh/wine
